@@ -1,0 +1,9 @@
+---
+title: "Solve. Automate. Move-on"
+description: "Musings of a developer"
+cascade:
+    featured_image: '/images/gohugo-default-sample-hero-image.jpg'
+
+draft: false
+---
+Welcome to my blog! I will be sharing insights from my tech journey on this blog.

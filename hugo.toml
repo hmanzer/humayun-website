@@ -1,0 +1,53 @@
+baseURL = 'https://humayunhub.com/'
+languageCode = 'en-us'
+title = 'Humayun Manzer'
+theme = 'ananke'
+
+[Pagination]
+pagerSize = 9
+
+[menu]
+  [[menu.main]]
+  name = "Home"
+  identifier = "home"
+  weight = 100
+  url = "/"
+
+  [[menu.main]]
+  name = "About"
+  weight = 200
+  identifier = "About"
+  url = "/about"
+
+  [[menu.main]]
+  name = "Blog"
+  weight = 300
+  identifier = "blog"
+  url = "/blog/"
+
+
+[params.ananke.social.follow]
+network = [
+    "linkedin"
+]
+
+[params.ananke.social.linkedin]
+username = "hyuman"
+
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
+    osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+
+  [security.funcs]
+    getenv = ['^HUGO_']
+
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['.*']

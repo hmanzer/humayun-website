@@ -1,0 +1,97 @@
+---
+title: "Common Issues Faced in DevOps"
+featured_image: "/img/mistakes.jpg"
+date: 2025-06-05T18:50:06+08:00
+tags: [DevOps, SRE]
+draft: true
+---
+
+== Misconfigured CI/CD Pipelines
+
+What Happens:
+- Builds fail unexpectedly.
+- Deployments go to the wrong environment.
+- Secrets or credentials get exposed.
+
+Example:
+A team accidentally deployed a staging build to production because the pipeline lacked environment-specific safeguards.
+
+How to Prevent It:
+- Use environment-specific variables and approval gates.
+- Store secrets securely (e.g., HashiCorp Vault, AWS Secrets Manager).
+- Implement pipeline linting and testing.
+
+== Lack of Proper Testing Before Deployment
+
+What Happens:
+- Bugs reach production.
+- Rollbacks become frequent.
+- Confidence in releases drops.
+
+Example:
+A microservice update passed unit tests but failed integration tests, causing a cascading failure in production.
+
+How to Prevent It:
+- Include unit, integration, and smoke tests in the pipeline.
+- Use canary or blue-green deployments.
+- Automate rollback strategies.
+
+== Poor Secrets Management
+
+What Happens:
+- Secrets are hardcoded in code or config files.
+- Credentials leak into version control.
+- Unauthorized access risks increase.
+
+Example:
+An engineer accidentally committed AWS keys to GitHub, leading to a \$5,000 bill from crypto mining bots.
+
+How to Prevent It:
+- Use secret scanning tools (e.g., GitGuardian, TruffleHog).
+- Rotate secrets regularly.
+- Use environment variables or secret managers.
+
+== Inadequate Monitoring and Alerting
+
+What Happens:
+- Incidents go unnoticed.
+- Alert fatigue from noisy or irrelevant alerts.
+- No visibility into system health.
+
+Example:
+A payment service went down for 2 hours before anyone noticed—because alerts were misconfigured and routed to an inactive Slack channel.
+
+How to Prevent It:
+- Set up meaningful SLOs and SLIs.
+- Use tools like Prometheus, Grafana, and Alertmanager.
+- Regularly review and tune alert rules.
+
+== Infrastructure Drift
+
+What Happens:
+- Manual changes in production diverge from IaC (Infrastructure as Code).
+- Debugging becomes difficult.
+- Environments become inconsistent.
+
+Example:
+A developer manually patched a production server, which was later overwritten by Terraform during a routine update.
+
+How to Prevent It:
+- Enforce IaC with tools like Terraform or Pulumi.
+- Use drift detection tools (e.g., Terraform Cloud, AWS Config).
+- Automate infrastructure provisioning and updates.
+
+== Tool Overload and Fragmentation
+
+What Happens:
+- Teams use too many overlapping tools.
+- Onboarding becomes difficult.
+- Integration issues arise.
+
+Example:
+A team used Jenkins, GitLab CI, and CircleCI simultaneously—leading to confusion over which pipeline was authoritative.
+
+How to Prevent It:
+- Standardize tooling across teams.
+- Use internal developer platforms (IDPs).
+- Document workflows clearly.
