@@ -3,7 +3,7 @@ title: "Common Issues Faced in DevOps"
 featured_image: "/img/mistakes.jpg"
 date: 2025-06-05T18:50:06+08:00
 tags: [DevOps, SRE]
-draft: true
+draft: false
 ---
 
 == Misconfigured CI/CD Pipelines
