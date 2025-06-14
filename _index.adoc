@@ -1,0 +1,7 @@
+---
+title: "Blog"
+draft: false
+date: 2025-05-25T12:00:00+08:00
+featured_image: "/img/hester-qiang-95t94hZTESw-unsplash.jpg"
+---
+We are all on a journey. Thanks for taking a peek into mine!

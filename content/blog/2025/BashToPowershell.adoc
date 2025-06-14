@@ -1,0 +1,128 @@
+---
+title: "Bash to Powershell Cheatsheet"
+featured_image: "/img/sebastian-dumitru-36g19a7ivrs-unsplash.jpg"
+date: 2025-06-10T16:00:00+08:00
+tags: [Powershell, Bash]
+draft: false
+omit_header_text: true
+---
+
+Bash to PowerShell Cheatsheet: A quick reference guide to help you translate common Bash commands into their PowerShell equivalents—and vice versa.
+
+Ideal for developers, sysadmins, or anyone transitioning between Linux and Windows environments.
+
+
+== File Operations
+
+[cols="1,1,1", options="header"]
+|===
+| Operation | Bash | PowerShell
+
+| List files in a directory
+| `ls`
+| `Get-ChildItem`
+
+| Change directory
+| `cd <directory>`
+| `Set-Location <directory>`
+
+| Copy a file
+| `cp <source> <destination>`
+| `Copy-Item <source> <destination>`
+
+| Move a file
+| `mv <source> <destination>`
+| `Move-Item <source> <destination>`
+
+| Delete a file
+| `rm <file>`
+| `Remove-Item <file>`
+
+| Create a directory
+| `mkdir <directory>`
+| `New-Item -ItemType Directory -Name <directory>`
+
+| Delete a directory
+| `rmdir <directory>`
+| `Remove-Item <directory> -Recurse`
+|===
+
+== Text Processing
+
+[cols="1,1,1", options="header"]
+|===
+| Operation | Bash | PowerShell
+
+| Print text to the console
+| `echo "Hello, World!"`
+| `Write-Output "Hello, World!"`
+
+| Read a file
+| `cat <file>`
+| `Get-Content <file>`
+
+| Find text in a file
+| `grep "text" <file>`
+| `Select-String -Pattern "text" -Path <file>`
+
+| Replace text in a file
+| `sed 's/old/new/g' <file>`
+| `(Get-Content <file>) -replace 'old', 'new' | Set-Content <file>`
+|===
+
+== System Information
+
+[cols="1,1,1", options="header"]
+|===
+| Operation | Bash | PowerShell
+
+| Display current user
+| `whoami`
+| `$env:UserName`
+
+| Display system information
+| `uname -a`
+| `Get-ComputerInfo`
+
+| Display environment variables
+| `printenv`
+| `Get-ChildItem Env:`
+|===
+
+== Network Operations
+
+[cols="1,1,1", options="header"]
+|===
+| Operation | Bash | PowerShell
+
+| Display IP address
+| `ip addr show`
+| `Get-NetIPAddress`
+
+| Test network connection
+| `ping <host>`
+| `Test-Connection <host>`
+
+| Display network configuration
+| `ifconfig`
+| `Get-NetIPConfiguration`
+|===
+
+== Package Management
+
+[cols="1,1,1", options="header"]
+|===
+| Operation | Bash | PowerShell
+
+| Install a package
+| `apt-get install <package>`
+| `Install-Package <package>`
+
+| Update package list
+| `apt-get update`
+| `Update-Package`
+
+| Upgrade all packages
+| `apt-get upgrade`
+| `Update-Package -All`
+|===

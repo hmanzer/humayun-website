@@ -1,0 +1,124 @@
+---
+title: "Karpenter in AWS"
+featured_image: "/img/Karpenter.png"
+date: 2025-06-14T19:58:00+08:00
+tags: [Kubernetes, Karpenter]
+draft: false
+omit_header_text: true
+---
+
+Karpenter is an open-source Kubernetes node autoscaler developed by AWS. It automatically launches the right compute resources (EC2 instances) when your cluster needs them and shuts them down when they’re no longer needed.
+
+Traditional autoscalers (like the Cluster Autoscaler) work well but can be slow and limited in flexibility. Karpenter is designed to be:
+
+Faster: It reacts quickly to unschedulable pods.
+Smarter: It chooses the best instance types based on your workload needs.
+Cost-efficient: It can use spot instances and right-size nodes to save money.
+Flexible: It doesn’t require pre-defined node groups.
+
+
+== Installation Steps
+
+=== Step 1: Create an IAM Role for Karpenter
+
+Create an IAM role with the necessary policies for Karpenter to provision EC2 instances.
+
+[source, bash]
+----
+eksctl create iamserviceaccount \
+  --cluster <your-cluster-name> \
+  --namespace karpenter \
+  --name karpenter \
+  --attach-policy-arn arn:aws:iam::<account-id>:policy/KarpenterControllerPolicy \
+  --approve
+----
+
+=== Step 2: Install Karpenter via Helm
+
+Add the Karpenter Helm repository and install it:
+
+[source, bash]
+----
+helm repo add karpenter https://charts.karpenter.sh
+helm repo update
+
+helm install karpenter karpenter/karpenter \
+  --namespace karpenter \
+  --create-namespace \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=karpenter \
+  --set controller.clusterName=<your-cluster-name> \
+  --set controller.clusterEndpoint=<your-cluster-endpoint> \
+  --set aws.defaultInstanceProfile=KarpenterNodeInstanceProfile
+----
+
+== Configuration
+
+Create a `Provisioner` resource to define how Karpenter should provision nodes:
+
+[source, yaml]
+----
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: default
+spec:
+  requirements:
+    - key: "node.kubernetes.io/instance-type"
+      operator: In
+      values: ["t3.medium", "t3.large"]
+  provider:
+    subnetSelector:
+      karpenter.sh/discovery: <your-cluster-name>
+    securityGroupSelector:
+      karpenter.sh/discovery: <your-cluster-name>
+  ttlSecondsAfterEmpty: 30
+----
+
+Apply the configuration:
+
+[source, bash]
+----
+kubectl apply -f provisioner.yaml
+----
+
+== Validation
+
+To test Karpenter, deploy a pod that requires scheduling:
+
+[source, yaml]
+----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inflate
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: inflate
+  template:
+    metadata:
+      labels:
+        app: inflate
+    spec:
+      containers:
+        - name: inflate
+          image: public.ecr.aws/eks-distro/kubernetes/pause:3.2
+          resources:
+            requests:
+              cpu: 1
+----
+
+Apply the deployment and monitor Karpenter provisioning new nodes:
+
+[source, bash]
+----
+kubectl apply -f inflate.yaml
+kubectl get nodes -w
+----
+
+== Conclusion
+
+Karpenter simplifies Kubernetes autoscaling by dynamically provisioning the right compute resources. With this setup, your EKS cluster can scale efficiently based on workload demands.
+

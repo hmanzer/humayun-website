@@ -1,0 +1,7 @@
+---
+title: "Blog"
+featured_image: '/img/hester-qiang-95t94hZTESw-unsplash.jpg'
+
+draft: false
+---
+Thank you for reading my tech blog!

@@ -20,6 +20,8 @@
 
 
 
+  
+
 
     
 
@@ -52,7 +54,13 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="DevOps">
 
-	
+	     <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon.png">
+     <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+     <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
+     <link rel="manifest" href="http://localhost:1313/site.webmanifest">
+     <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg" color="#5bbad5">
+     <meta name="msapplication-TileColor" content="#da532c">
+     <meta name="theme-color" content="#ffffff">
   </head><body class="ma0 avenir bg-near-white development">
 
     
@@ -76,6 +84,12 @@
         <ul class="pl0 mr3">
           
           <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/blog/" title="Blog page">
+              Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
             <a class="hover-white white-90 no-underline" href="/" title="Home page">
               Home
             </a>
@@ -87,15 +101,16 @@
             </a>
           </li>
           
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/blog/" title="Blog page">
-              Blog
-            </a>
-          </li>
-          
         </ul>
       
-      <div class="ananke-socials"></div>
+      <div class="ananke-socials"><a href="http://linkedin.com/in/hyuman" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
 
     </div>
   </div>
@@ -124,42 +139,36 @@
         <div class="w-100 mb4 relative bg-white">
           <div class="w-100 mb4 nested-copy-line-height relative bg-white">
   <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Blogs</span>
+    <span class="f6 db">Blog</span>
     <h1 class="f3 near-black">
       <a href="/blog/2025/commondevopsissues/" class="link black dim">
         Common Issues Faced in DevOps
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <div class="sect1">
+      <div class="paragraph">
+<p>I recently had a few hiccups while dealing with our DevOps Pipeline.</p>
+</div>
+<div class="paragraph">
+<p>This blog post will hopefully help you understand, the common issues that we deal with DevOps pipeline.</p>
+</div>
+<div class="sect1">
 <h2 id="_misconfigured_cicd_pipelines">Misconfigured CI/CD Pipelines</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>What Happens:
-- Builds fail unexpectedly.
-- Deployments go to the wrong environment.
-- Secrets or credentials get exposed.</p>
+<p><strong>Scenario:</strong> <br/>
+- Builds fail unexpectedly. <br/>
+- IAM Roles missing <br/>
+- Secrets missing. <br/></p>
 </div>
 <div class="paragraph">
-<p>Example:
-A team accidentally deployed a staging build to production because the pipeline lacked environment-specific safeguards.</p>
+<p><strong>Example:</strong> <br/>
+A team didn’t move underlying resources before production release. <br/></p>
 </div>
 <div class="paragraph">
-<p>How to Prevent It:
-- Use environment-specific variables and approval gates.
-- Store secrets securely (e.g., HashiCorp Vault, AWS Secrets Manager).
-- Implement pipeline linting and testing.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_lack_of_proper_testing_before_deployment">Lack of Proper Testing Before Deployment</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>What Happens:
-- Bugs reach production.
-- Rollbacks become frequent.
-- Confidence in releases drops.</p>
+<p><strong>How to Prevent It:</strong><br/>
+- Use environment-specific variables and a terraform approval plan<br/>
+- Store secrets (e.g., HashiCorp Vault, AWS Secrets Manager).<br/></p>
 </div>
     </div>
     <a href="/blog/2025/commondevopsissues/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
@@ -177,7 +186,14 @@ A team accidentally deployed a staging build to production because the pipeline 
   <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
     &copy;  Humayun Manzer 2025 
   </a>
-    <div><div class="ananke-socials"></div>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/hyuman" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
 </div>
   </div>
 </footer>

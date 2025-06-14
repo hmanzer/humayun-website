@@ -3,8 +3,11 @@ languageCode = 'en-us'
 title = 'Humayun Manzer'
 theme = 'ananke'
 
-[Pagination]
-pagerSize = 9
+[pagination]
+  pagerSize = 2
+
+[params]
+  custom_css = ["custom.css"]
 
 [menu]
   [[menu.main]]
@@ -21,13 +24,13 @@ pagerSize = 9
 
   [[menu.main]]
   name = "Blog"
-  weight = 300
+  weight = 100
   identifier = "blog"
   url = "/blog/"
 
 
 [params.ananke.social.follow]
-network = [
+networks = [
     "linkedin"
 ]
 
