@@ -3,21 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://humayunhub.com/blog/</loc>
-    <lastmod>2025-06-14T19:58:00+08:00</lastmod>
+    <lastmod>2025-06-22T17:28:00+08:00</lastmod>
+  </url><url>
+    <loc>https://humayunhub.com/tags/kubernetes/</loc>
+    <lastmod>2025-06-22T17:28:00+08:00</lastmod>
+  </url><url>
+    <loc>https://humayunhub.com/tags/secrets/</loc>
+    <lastmod>2025-06-22T17:28:00+08:00</lastmod>
+  </url><url>
+    <loc>https://humayunhub.com/blog/2025/securesecrets/</loc>
+    <lastmod>2025-06-22T17:28:00+08:00</lastmod>
+  </url><url>
+    <loc>https://humayunhub.com/</loc>
+    <lastmod>2025-06-22T17:28:00+08:00</lastmod>
+  </url><url>
+    <loc>https://humayunhub.com/tags/</loc>
+    <lastmod>2025-06-22T17:28:00+08:00</lastmod>
   </url><url>
     <loc>https://humayunhub.com/tags/karpenter/</loc>
     <lastmod>2025-06-14T19:58:00+08:00</lastmod>
   </url><url>
     <loc>https://humayunhub.com/blog/2025/karpenter/</loc>
-    <lastmod>2025-06-14T19:58:00+08:00</lastmod>
-  </url><url>
-    <loc>https://humayunhub.com/tags/kubernetes/</loc>
-    <lastmod>2025-06-14T19:58:00+08:00</lastmod>
-  </url><url>
-    <loc>https://humayunhub.com/</loc>
-    <lastmod>2025-06-14T19:58:00+08:00</lastmod>
-  </url><url>
-    <loc>https://humayunhub.com/tags/</loc>
     <lastmod>2025-06-14T19:58:00+08:00</lastmod>
   </url><url>
     <loc>https://humayunhub.com/tags/bash/</loc>

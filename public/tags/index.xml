@@ -6,20 +6,27 @@
     <description>Recent content in Tags on Humayun Manzer</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Jun 2025 19:58:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Jun 2025 17:28:00 +0800</lastBuildDate>
     <atom:link href="https://humayunhub.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes</title>
+      <link>https://humayunhub.com/tags/kubernetes/</link>
+      <pubDate>Sun, 22 Jun 2025 17:28:00 +0800</pubDate>
+      <guid>https://humayunhub.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Secrets</title>
+      <link>https://humayunhub.com/tags/secrets/</link>
+      <pubDate>Sun, 22 Jun 2025 17:28:00 +0800</pubDate>
+      <guid>https://humayunhub.com/tags/secrets/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Karpenter</title>
       <link>https://humayunhub.com/tags/karpenter/</link>
       <pubDate>Sat, 14 Jun 2025 19:58:00 +0800</pubDate>
       <guid>https://humayunhub.com/tags/karpenter/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Kubernetes</title>
-      <link>https://humayunhub.com/tags/kubernetes/</link>
-      <pubDate>Sat, 14 Jun 2025 19:58:00 +0800</pubDate>
-      <guid>https://humayunhub.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     <item>

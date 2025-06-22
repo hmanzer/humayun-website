@@ -6,3 +6,9 @@ p code {
     margin: 0 2px;
     padding: 3px 4px;
 }
+
+.bg-black-60 {
+  height: 50vh; /* or a fixed height like 500px */
+  background-size: cover;
+  background-position: center;
+}

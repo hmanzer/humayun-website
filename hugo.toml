@@ -4,7 +4,7 @@ title = 'Humayun Manzer'
 theme = 'ananke'
 
 [pagination]
-  pagerSize = 2
+  pagerSize = 3
 
 [params]
   custom_css = ["custom.css"]
