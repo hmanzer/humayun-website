@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Humayun Manzer</title>
+    <link>https://humayunhub.com/tags/</link>
+    <description>Recent content in Tags on Humayun Manzer</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 14 Jun 2025 19:58:00 +0800</lastBuildDate>
+    <atom:link href="https://humayunhub.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Karpenter</title>
+      <link>https://humayunhub.com/tags/karpenter/</link>
+      <pubDate>Sat, 14 Jun 2025 19:58:00 +0800</pubDate>
+      <guid>https://humayunhub.com/tags/karpenter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubernetes</title>
+      <link>https://humayunhub.com/tags/kubernetes/</link>
+      <pubDate>Sat, 14 Jun 2025 19:58:00 +0800</pubDate>
+      <guid>https://humayunhub.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bash</title>
+      <link>https://humayunhub.com/tags/bash/</link>
+      <pubDate>Tue, 10 Jun 2025 16:00:00 +0800</pubDate>
+      <guid>https://humayunhub.com/tags/bash/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Powershell</title>
+      <link>https://humayunhub.com/tags/powershell/</link>
+      <pubDate>Tue, 10 Jun 2025 16:00:00 +0800</pubDate>
+      <guid>https://humayunhub.com/tags/powershell/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevOps</title>
+      <link>https://humayunhub.com/tags/devops/</link>
+      <pubDate>Thu, 05 Jun 2025 18:50:06 +0800</pubDate>
+      <guid>https://humayunhub.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SRE</title>
+      <link>https://humayunhub.com/tags/sre/</link>
+      <pubDate>Thu, 05 Jun 2025 18:50:06 +0800</pubDate>
+      <guid>https://humayunhub.com/tags/sre/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

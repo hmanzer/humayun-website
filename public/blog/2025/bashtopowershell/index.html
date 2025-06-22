@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Bash to Powershell Cheatsheet | Humayun Manzer</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="
+Bash to PowerShell Cheatsheet: A quick reference guide to help you translate common Bash commands into their PowerShell equivalents—and vice versa.
+
+
+Ideal for developers, sysadmins, or anyone transitioning between Linux and Windows environments.
+
+
+File Operations
+
+
+
+
+
+
+
+
+
+Operation
+Bash
+PowerShell
+
+
+
+
+List files in a directory
+ls
+Get-ChildItem
+
+
+Change directory
+cd &lt;directory&gt;
+Set-Location &lt;directory&gt;
+
+
+Copy a file
+cp &lt;source&gt; &lt;destination&gt;
+Copy-Item &lt;source&gt; &lt;destination&gt;
+
+
+Move a file
+mv &lt;source&gt; &lt;destination&gt;
+Move-Item &lt;source&gt; &lt;destination&gt;
+
+
+Delete a file
+rm &lt;file&gt;
+Remove-Item &lt;file&gt;
+
+
+Create a directory
+mkdir &lt;directory&gt;
+New-Item -ItemType Directory -Name &lt;directory&gt;
+
+
+Delete a directory
+rmdir &lt;directory&gt;
+Remove-Item &lt;directory&gt; -Recurse
+
+
+
+">
+    <meta name="generator" content="Hugo 0.147.7">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.3fb4b1ac0e0c0ce46c1f4970d12e3539144f743b4919c5989399bf94ade039ba.css" >
+
+
+
+  
+
+
+    
+
+
+    
+      
+<link rel="shortcut icon" href="/favicon-32x32.png" type="image/x-icon" />
+
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://humayunhub.com/blog/2025/bashtopowershell/">
+    
+
+    <meta property="og:url" content="https://humayunhub.com/blog/2025/bashtopowershell/">
+  <meta property="og:site_name" content="Humayun Manzer">
+  <meta property="og:title" content="Bash to Powershell Cheatsheet">
+  <meta property="og:description" content="Bash to PowerShell Cheatsheet: A quick reference guide to help you translate common Bash commands into their PowerShell equivalents—and vice versa.
+Ideal for developers, sysadmins, or anyone transitioning between Linux and Windows environments.
+File Operations Operation Bash PowerShell List files in a directory
+ls
+Get-ChildItem
+Change directory
+cd &lt;directory&gt;
+Set-Location &lt;directory&gt;
+Copy a file
+cp &lt;source&gt; &lt;destination&gt;
+Copy-Item &lt;source&gt; &lt;destination&gt;
+Move a file
+mv &lt;source&gt; &lt;destination&gt;
+Move-Item &lt;source&gt; &lt;destination&gt;
+Delete a file
+rm &lt;file&gt;
+Remove-Item &lt;file&gt;
+Create a directory
+mkdir &lt;directory&gt;
+New-Item -ItemType Directory -Name &lt;directory&gt;
+Delete a directory
+rmdir &lt;directory&gt;
+Remove-Item &lt;directory&gt; -Recurse">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-06-10T16:00:00+08:00">
+    <meta property="article:modified_time" content="2025-06-10T16:00:00+08:00">
+    <meta property="article:tag" content="Powershell">
+    <meta property="article:tag" content="Bash">
+
+  <meta itemprop="name" content="Bash to Powershell Cheatsheet">
+  <meta itemprop="description" content="Bash to PowerShell Cheatsheet: A quick reference guide to help you translate common Bash commands into their PowerShell equivalents—and vice versa.
+Ideal for developers, sysadmins, or anyone transitioning between Linux and Windows environments.
+File Operations Operation Bash PowerShell List files in a directory
+ls
+Get-ChildItem
+Change directory
+cd &lt;directory&gt;
+Set-Location &lt;directory&gt;
+Copy a file
+cp &lt;source&gt; &lt;destination&gt;
+Copy-Item &lt;source&gt; &lt;destination&gt;
+Move a file
+mv &lt;source&gt; &lt;destination&gt;
+Move-Item &lt;source&gt; &lt;destination&gt;
+Delete a file
+rm &lt;file&gt;
+Remove-Item &lt;file&gt;
+Create a directory
+mkdir &lt;directory&gt;
+New-Item -ItemType Directory -Name &lt;directory&gt;
+Delete a directory
+rmdir &lt;directory&gt;
+Remove-Item &lt;directory&gt; -Recurse">
+  <meta itemprop="datePublished" content="2025-06-10T16:00:00+08:00">
+  <meta itemprop="dateModified" content="2025-06-10T16:00:00+08:00">
+  <meta itemprop="wordCount" content="215">
+  <meta itemprop="keywords" content="Powershell,Bash">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bash to Powershell Cheatsheet">
+  <meta name="twitter:description" content="Bash to PowerShell Cheatsheet: A quick reference guide to help you translate common Bash commands into their PowerShell equivalents—and vice versa.
+Ideal for developers, sysadmins, or anyone transitioning between Linux and Windows environments.
+File Operations Operation Bash PowerShell List files in a directory
+ls
+Get-ChildItem
+Change directory
+cd &lt;directory&gt;
+Set-Location &lt;directory&gt;
+Copy a file
+cp &lt;source&gt; &lt;destination&gt;
+Copy-Item &lt;source&gt; &lt;destination&gt;
+Move a file
+mv &lt;source&gt; &lt;destination&gt;
+Move-Item &lt;source&gt; &lt;destination&gt;
+Delete a file
+rm &lt;file&gt;
+Remove-Item &lt;file&gt;
+Create a directory
+mkdir &lt;directory&gt;
+New-Item -ItemType Directory -Name &lt;directory&gt;
+Delete a directory
+rmdir &lt;directory&gt;
+Remove-Item &lt;directory&gt; -Recurse">
+
+      
+    
+	     <link rel="icon" type="image/png" sizes="32x32" href="https://humayunhub.com/favicon.png">
+     <link rel="icon" type="image/png" sizes="16x16" href="https://humayunhub.com/favicon-16x16.png">
+     <link rel="apple-touch-icon" sizes="180x180" href="https://humayunhub.com/apple-touch-icon.png">
+     <link rel="manifest" href="https://humayunhub.com/site.webmanifest">
+     <link rel="mask-icon" href="https://humayunhub.com/safari-pinned-tab.svg" color="#5bbad5">
+     <meta name="msapplication-TileColor" content="#da532c">
+     <meta name="theme-color" content="#ffffff">
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://humayunhub.com/img/sebastian-dumitru-36g19a7ivrs-unsplash.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Humayun Manzer
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/blog/" title="Blog page">
+              Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about" title="About page">
+              About
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/hyuman" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Blog
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Bash to Powershell Cheatsheet</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-06-10T16:00:00+08:00">June 10, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><div class="paragraph">
+<p>Bash to PowerShell Cheatsheet: A quick reference guide to help you translate common Bash commands into their PowerShell equivalents—and vice versa.</p>
+</div>
+<div class="paragraph">
+<p>Ideal for developers, sysadmins, or anyone transitioning between Linux and Windows environments.</p>
+</div>
+<div class="sect1">
+<h2 id="_file_operations">File Operations</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">Bash</th>
+<th class="tableblock halign-left valign-top">PowerShell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List files in a directory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ls</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Get-ChildItem</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change directory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cd &lt;directory&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Set-Location &lt;directory&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Copy a file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cp &lt;source&gt; &lt;destination&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Copy-Item &lt;source&gt; &lt;destination&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move a file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mv &lt;source&gt; &lt;destination&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Move-Item &lt;source&gt; &lt;destination&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete a file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rm &lt;file&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Remove-Item &lt;file&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a directory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mkdir &lt;directory&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>New-Item -ItemType Directory -Name &lt;directory&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete a directory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rmdir &lt;directory&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Remove-Item &lt;directory&gt; -Recurse</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_text_processing">Text Processing</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">Bash</th>
+<th class="tableblock halign-left valign-top">PowerShell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Print text to the console</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>echo &#34;Hello, World!&#34;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Write-Output &#34;Hello, World!&#34;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read a file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cat &lt;file&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Get-Content &lt;file&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find text in a file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grep &#34;text&#34; &lt;file&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Select-String -Pattern &#34;text&#34; -Path &lt;file&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replace text in a file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sed &#39;s/old/new/g&#39; &lt;file&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">`(Get-Content &lt;file&gt;) -replace &#39;old&#39;, &#39;new&#39;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_system_information">System Information</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">Bash</th>
+<th class="tableblock halign-left valign-top">PowerShell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display current user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>whoami</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$env:UserName</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display system information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>uname -a</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Get-ComputerInfo</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display environment variables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printenv</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Get-ChildItem Env:</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_network_operations">Network Operations</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">Bash</th>
+<th class="tableblock halign-left valign-top">PowerShell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display IP address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ip addr show</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Get-NetIPAddress</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test network connection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ping &lt;host&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test-Connection &lt;host&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display network configuration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ifconfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Get-NetIPConfiguration</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_package_management">Package Management</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">Bash</th>
+<th class="tableblock halign-left valign-top">PowerShell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Install a package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apt-get install &lt;package&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Install-Package &lt;package&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update package list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apt-get update</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Update-Package</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Upgrade all packages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apt-get upgrade</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Update-Package -All</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/powershell/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Powershell</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/bash/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Bash</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://humayunhub.com/" >
+    &copy;  Humayun Manzer 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/hyuman" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
