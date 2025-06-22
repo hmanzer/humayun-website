@@ -6,4 +6,4 @@ cascade:
 
 draft: false
 ---
-Welcome to my blog! I will be sharing insights from my tech journey on this blog.
+Welcome to my blog! I will be sharing insights from my tech journey here.

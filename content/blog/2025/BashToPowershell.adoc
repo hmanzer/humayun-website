@@ -1,11 +1,15 @@
 ---
 title: "Bash to Powershell Cheatsheet"
 featured_image: "/img/sebastian-dumitru-36g19a7ivrs-unsplash.jpg"
+image_credit: https://unsplash.com/photos/persons-hand-on-white-wall-36g19a7ivrs
 date: 2025-06-10T16:00:00+08:00
 tags: [Powershell, Bash]
 draft: false
 omit_header_text: true
 ---
+
+{{< image_credit >}}
+
 
 Bash to PowerShell Cheatsheet: A quick reference guide to help you translate common Bash commands into their PowerShell equivalents—and vice versa.
 

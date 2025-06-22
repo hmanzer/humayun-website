@@ -1,7 +1,10 @@
 ---
 title: "Blog"
-featured_image: '/img/hester-qiang-95t94hZTESw-unsplash.jpg'
-
+featured_image: '/img/matt-foxx-IUY_3DvM__w-unsplash.jpg'
+image_credit: https://unsplash.com/photos/asphalt-road-between-trees-IUY_3DvM__w?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash
 draft: false
 ---
+
+{{< image_credit >}}
+
 Thank you for reading my tech blog!
