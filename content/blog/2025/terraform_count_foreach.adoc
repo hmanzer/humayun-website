@@ -1,0 +1,143 @@
+---
+title: "Terraform count vs for_each: A Friendly Guide (+ Cheatsheet)"
+featured_image: "/img/anton-pavlov-3pxbdA4XGFQ-unsplash.jpg"
+image_credit: https://unsplash.com/photos/a-couple-of-toy-cars-sitting-on-top-of-a-table-3pxbdA4XGFQ?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash
+date: 2025-07-23T18:00:00+08:00
+tags: [Terraform, Choice, DevOps]
+draft: false
+omit_header_text: true
+---
+
+{{< image_credit >}}
+
+
+Choosing between `count` and `for_each` in Terraform looks simple at first, but it can change how predictable your infrastructure is over time. I've been bitten by both approaches in the past, so here's a practical guide to when each one makes sense, with examples and a quick cheatsheet.
+
+<!--more-->
+== TL;DR
+
+* If the *identity* of each item matters (like named users, buckets, or environments), go with **`for_each`**.
+* If you just need **N identical replicas**, **`count`** is simpler.
+* Lists + `count` are fragile if order changes. `for_each` uses stable keys, so adding/removing items is safer.
+
+== How I think about it
+It comes down to *how you reference the resource*:
+
+* `count` → you reference by index, e.g. `aws_instance.web[0]`.
+* `for_each` → you reference by a key, e.g. `aws_instance.web["blue"]`.
+
+If humans will ever care about “which one is which,” you probably want `for_each`.
+
+== Quick compare
+[cols="1,1", options="header"]
+|===
+| Question | Go with
+| Do I need a fixed number of replicas (3 web servers)? | `count`
+| Do I have named items (blue/green/canary)? | `for_each`
+| Will I add/remove items over time? | `for_each`
+| Do I need stable references in outputs and modules? | `for_each`
+| Is my input just a simple list without keys? | `count` (or convert list → map if you want `for_each`)
+|===
+
+== Examples
+
+=== Using `count`
+[source,hcl]
+-------------
+
+variable "names" { type = list(string) }
+
+resource "aws_instance" "web" {
+count = length(var.names)
+ami           = data.aws_ami.amazon_linux.id
+instance_type = "t3.micro"
+tags = { Name = var.names[count.index] }
+}
+
+output "first_web_name" { value = var.names[0] }
+output "first_web_id"   { value = aws_instance.web[0].id }
+--------------------------------------------------------------
+
+Good when: you just need copies. +
+Gotcha: if you insert a new element at the start of the list, Terraform thinks everything shifted and wants to recreate.
+
+=== Using `for_each`
+[source,hcl]
+-------------
+
+variable "servers" {
+type = map(object({ size = string }))
+}
+
+resource "aws_instance" "web" {
+for_each      = var.servers
+ami           = data.aws_ami.amazon_linux.id
+instance_type = each.value.size
+tags = { Name = each.key }
+}
+
+## output "ids_by_name" { value = { for k, r in aws_instance.web : k => r.id } }
+
+Good when: items have names and you expect to add/remove them later. +
+Gotcha: if you rename a key, Terraform sees it as a delete + create.
+
+== Pitfalls I've hit
+
+* **Reordering with `count`** → surprise destroys. Fix: avoid reordering, or switch to `for_each`.
+* **Using `for_each` with a list** → unstable numeric keys. Fix: turn list into a map with meaningful keys.
+* **Changing keys in `for_each`** → causes churn. Treat keys like permanent IDs.
+
+== Converting a list to a map for `for_each`
+[source,hcl]
+-------------
+
+variable "names" { type = list(string) }
+locals {
+servers = { for n in var.names : n => { size = "t3.micro" } }
+}
+resource "aws_instance" "web" {
+for_each      = local.servers
+instance_type = each.value.size
+}
+-------------
+
+== Migrating safely
+If you're moving from `count` to `for_each`, the trick is to line up existing indices with the keys you want, then run `terraform state mv` so Terraform doesn't recreate everything.
+
+## [source,shell]
+
+terraform state mv 'aws_instance.web[0]' 'aws_instance.web["blue"]'
+terraform state mv 'aws_instance.web[1]' 'aws_instance.web["green"]'
+------------------------------------------------------------------------
+
+== Patterns I've seen work
+
+* ✅ Use `count` for symmetric replicas (workers, identical copies).
+* ✅ Use `for_each` for things that have names or identities (users, buckets, environments).
+* ❌ Avoid `count` if you'll keep changing the list.
+* ❌ Avoid `for_each` with volatile or generated keys.
+
+== FAQ
+
+*Why did Terraform want to recreate my `count` resources?*
+Because your list changed order, and with `count` the index *is* the identity.
+
+*Can a resource use both?*
+No, it's either `count` or `for_each`.
+
+*How should I expose results?*
+With `for_each`, outputs as maps (`{ name => id }`). With `count`, outputs as lists (but note that order matters).
+
+== Handy checklist
+
+* Do humans care about which item is which? → `for_each`
+* Will I add/remove items later? → `for_each`
+* Are they just identical copies? → `count`
+* Do outputs need stable keys? → `for_each`
+
+[sidebar]
+== Related reads
+
+* Terraform state & addressing basics
+* Handling drift & `terraform import`
+* Designing good module inputs (maps vs lists)

@@ -15,7 +15,7 @@ Bash to PowerShell Cheatsheet: A quick reference guide to help you translate com
 
 Ideal for developers, sysadmins, or anyone transitioning between Linux and Windows environments.
 
-
+<!--more-->
 == File Operations
 
 [cols="1,1,1", options="header"]

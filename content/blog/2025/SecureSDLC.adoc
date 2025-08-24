@@ -1,0 +1,77 @@
+---
+title: "Secure SDLC"
+featured_image: "/img/jan-zinnbauer-ZLfl16yNSTY-unsplash.jpg"
+image_credit: https://unsplash.com/photos/grey-metal-chain-link-fence-ZLfl16yNSTY?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash
+date: 2025-06-23T18:00:00+08:00
+tags: [SSDLC, DevSecOps, Security]
+draft: false
+omit_header_text: true
+---
+
+{{< image_credit >}}
+
+In today's fast-paced software development landscape, security can no longer be an afterthought. The traditional Software Development Life Cycle (SDLC) often treated security as a final step, a gate that developers had to pass through before deployment. This approach led to vulnerabilities slipping through the cracks, resulting in costly breaches and reputational damages.
+Instead, we need to embrace a Secure SDLC (SSDLC) that integrates security into every phase of development. This is where DevSecOps comes in.
+<!--more-->
+
+== Phase 1: Plan & Design
+
+Security starts before a single line of code is written. In this phase, the goal is to proactively identify and mitigate potential design flaws.
+
+* *Key Activity: Threat Modeling*
+** *What it is:* A structured process of identifying potential threats and vulnerabilities from an attacker's perspective. Ask questions like: "How could this feature be abused?", "Where are we handling sensitive data?", and "What are our trust boundaries?"
+** *Why it matters:* It's infinitely cheaper and faster to fix a security flaw on a whiteboard than in production code.
+** *Tools to Use:* link:https://owasp.org/www-project-threat-dragon/[OWASP Threat Dragon], link:https://www.microsoft.com/en-us/securityengineering/threatmodeling[Microsoft Threat Modeling Tool].
+
+== Phase 2: Code & Develop
+
+This is where you empower developers to be the first line of defense. The key is providing immediate, actionable feedback directly within their workflow.
+
+* *Key Activities:*
+** *IDE Security Plugins:* Integrate tools that scan code for vulnerabilities and bad practices in real-time, directly in the developer's Integrated Development Environment (IDE).
+** *Pre-Commit Hooks:* Implement automated checks that run before code is even committed to a repository. This is your best chance to catch hard-coded secrets (API keys, passwords) before they ever become part of the codebase.
+* *Why it matters:* It provides instant feedback loops, teaching secure coding habits and preventing simple mistakes from ever reaching the main branch.
+* *Tools to Use:* link:https://snyk.io/product/snyk-code/[Snyk Code] (IDE), link:https://www.sonarlint.org/[SonarLint] (IDE), link:https://github.com/trufflesecurity/trufflehog[TruffleHog] (Pre-commit), link:https://github.com/awslabs/git-secrets[git-secrets] (Pre-commit).
+
+== Phase 3: Build & CI (Continuous Integration)
+
+When code is committed, your CI server springs to life. This is your first major automation checkpoint for security.
+
+* *Key Activities:*
+** *Static Application Security Testing (SAST):* The CI pipeline automatically scans the application's source code, looking for known vulnerability patterns like SQL injection, cross-site scripting (XSS), and insecure configurations.
+** *Software Composition Analysis (SCA):* Your application relies on dozens, if not hundreds, of open-source libraries. SCA tools scan these dependencies, checking them against a database of known vulnerabilities (CVEs) and ensuring license compliance.
+* *Why it matters:* This automates the detection of a huge class of vulnerabilities without slowing down the build process. It's your automated code review partner.
+* *Tools to Use:* link:https://www.sonarsource.com/products/sonarqube/[SonarQube], link:https://checkmarx.com/[Checkmarx], link:https://snyk.io/product/open-source-security/[Snyk Open Source], link:https://owasp.org/www-project-dependency-check/[OWASP Dependency-Check].
+
+== Phase 4: Test & QA
+
+While SAST analyzes the code, Dynamic Application Security Testing (DAST) analyzes the running application. This is crucial for finding issues that only appear at runtime.
+
+* *Key Activity: Dynamic Application Security Testing (DAST)*
+** *What it is:* Your CI/CD pipeline deploys the application to a staging or testing environment, and the DAST tool then attacks it, probing for vulnerabilities from the outside-in, just as a real attacker would.
+** *Why it matters:* It finds runtime and configuration issues that static analysis can miss.
+** *Tools to Use:* link:https://www.zaproxy.org/[OWASP ZAP], link:https://portswigger.net/burp/enterprise[Burp Suite Enterprise].
+
+== Phase 5: Deploy & CD (Continuous Deployment)
+
+Security doesn't stop with the application code. The infrastructure it runs on is just as critical.
+
+* *Key Activities:*
+** *Infrastructure as Code (IaC) Scanning:* Before applying infrastructure changes with tools like Terraform or CloudFormation, scan the code for misconfigurations, such as public S3 buckets or unrestricted security groups.
+** *Container Image Scanning:* Before pushing a container image to a registry (like Docker Hub or ECR), scan it for known vulnerabilities in its OS packages and software layers.
+* *Why it matters:* This prevents security misconfigurations from ever reaching your production environment.
+* *Tools to Use:* link:https://www.checkov.io/[Checkov], link:https://github.com/aquasecurity/tfsec[tfsec], link:https://github.com/aquasecurity/trivy[Trivy], link:https://github.com/quay/clair[Clair].
+
+== Phase 6: Operate & Monitor
+
+Once deployed, your job has just begun. Continuous monitoring ensures you can detect and respond to threats in your live environment.
+
+* *Key Activities:*
+** *Cloud Security Posture Management (CSPM):* Continuously monitor your cloud environment for new misconfigurations, compliance violations, and suspicious activity.
+** *Runtime Security:* Monitor running containers and hosts for anomalous behavior. If a container suddenly starts a reverse shell or accesses sensitive files, you need to know immediately.
+* *Why it matters:* The threat landscape is always changing. Continuous monitoring provides the visibility you need to protect your running systems.
+* *Tools to Use:* link:https://falco.org/[Falco] (Runtime), link:https://aws.amazon.com/security-hub/[AWS Security Hub]/link:https://azure.microsoft.com/en-us/products/defender-for-cloud[Azure Defender for Cloud] (CSPM).
+
+'''
+
+== It's a Culture, Not Just a Checklist

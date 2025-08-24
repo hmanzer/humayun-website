@@ -15,7 +15,7 @@ Faster: It reacts quickly to unschedulable pods.
 Smarter: It chooses the best instance types based on your workload needs.
 Cost-efficient: It can use spot instances and right-size nodes to save money.
 Flexible: It doesn’t require pre-defined node groups.
-
+<!--more-->
 
 == Installation Steps
 

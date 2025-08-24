@@ -4,11 +4,13 @@ title = 'Humayun Manzer'
 theme = 'ananke'
 
 [pagination]
-  pagerSize = 3
+  pagerSize = 6
+  mainSection = ["blog"]
 
 [params]
   custom_css = ["custom.css"]
   favicon="favicon-32x32.png"
+  dateFormat = "Jan 2, 2006"
 
 [menu]
   [[menu.main]]

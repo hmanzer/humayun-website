@@ -6,8 +6,9 @@ draft: false
 
 {{<figure src="/img/humayuninHK.jpeg" title="Humayun Manzer" >}}
 
-Hi, I’m Humayun, a passionate DevOps Engineer with a focus on building scalable, secure, and automated infrastructure. I specialize in bridging the gap between development and operations by implementing CI/CD pipelines, container orchestration (Kubernetes), infrastructure as code, and cloud-native solutions.
+Hi, I'm Humayun, a passionate DevOps Engineer with a focus on building scalable, secure, and automated infrastructure. I specialize in bridging the gap between development and operations by implementing CI/CD pipelines, container orchestration (Kubernetes), infrastructure as code, and cloud-native solutions.
 
-With a strong belief in automation and reliability, I enjoy solving complex problems, optimizing workflows, and helping teams ship faster with confidence. Whether it’s deploying microservices, managing cloud infrastructure, or improving observability, I’m always exploring better ways to make systems more resilient and efficient.
+With a strong belief in automation and reliability, I enjoy solving complex problems, optimizing workflows, and helping teams ship faster with confidence. Whether it's deploying microservices, managing cloud infrastructure, or improving observability, I'm always exploring better ways to make systems more resilient and efficient.
 
-When I’m not deep in YAML or Terraform, you’ll find me learning new tools, contributing to DevOps communities, or writing about real-world engineering challenges.
+When I'm not deep in YAML or Terraform, you'll find me learning new tools, contributing to DevOps communities, or writing about real-world engineering challenges.
+<!--more-->

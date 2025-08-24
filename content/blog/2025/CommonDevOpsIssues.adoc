@@ -10,7 +10,7 @@ omit_header_text: true
 I recently had a few hiccups while dealing with our DevOps Pipeline. 
 
 This blog post will hopefully help you understand, the common issues that we deal with DevOps pipeline.
-
+<!--more-->
 
 == Misconfigured CI/CD Pipelines
 
