@@ -104,11 +104,12 @@ instance_type = each.value.size
 == Migrating safely
 If you're moving from `count` to `for_each`, the trick is to line up existing indices with the keys you want, then run `terraform state mv` so Terraform doesn't recreate everything.
 
-## [source,shell]
-
+[source,shell]
+```
 terraform state mv 'aws_instance.web[0]' 'aws_instance.web["blue"]'
 terraform state mv 'aws_instance.web[1]' 'aws_instance.web["green"]'
-------------------------------------------------------------------------
+```
+
 
 == Patterns I've seen work
 
@@ -119,13 +120,13 @@ terraform state mv 'aws_instance.web[1]' 'aws_instance.web["green"]'
 
 == FAQ
 
-*Why did Terraform want to recreate my `count` resources?*
+* Why did Terraform want to recreate my `count` resources?*
 Because your list changed order, and with `count` the index *is* the identity.
 
-*Can a resource use both?*
+* Can a resource use both?*
 No, it's either `count` or `for_each`.
 
-*How should I expose results?*
+* How should I expose results?*
 With `for_each`, outputs as maps (`{ name => id }`). With `count`, outputs as lists (but note that order matters).
 
 == Handy checklist
